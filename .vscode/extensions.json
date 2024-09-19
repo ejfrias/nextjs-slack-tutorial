@@ -1,0 +1,11 @@
+{
+  "recommendations": [
+    "github.copilot",
+    "github.vscode-pull-request-github",
+    "eamodio.gitlens",
+    "esbenp.prettier-vscode",
+    "burkeholland.simple-react-snippets",
+    "stylelint.vscode-stylelint",
+    "bradlc.vscode-tailwindcss"
+  ]
+}
