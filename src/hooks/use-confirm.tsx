@@ -53,7 +53,7 @@ export const useConfirm = ({
           <DialogHeader>
             <DialogTitle>{title}</DialogTitle>
           </DialogHeader>
-          <div className="space-y-4">{message}</div>
+          <div className="space-y-4 text-sm">{message}</div>
           <DialogFooter>
             <Button variant="outline" onClick={handleCancel}>
               {cancelText}
