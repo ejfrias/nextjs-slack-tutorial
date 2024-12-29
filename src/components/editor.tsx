@@ -1,5 +1,6 @@
 import { cn } from '@/lib/utils';
-import { ImageIcon, Smile } from 'lucide-react';
+import { ImageIcon, Smile, XIcon } from 'lucide-react';
+import Image from 'next/image';
 import Quill, { QuillOptions } from 'quill';
 import { Delta, Op } from 'quill/core';
 import 'quill/dist/quill.snow.css';
@@ -136,6 +137,7 @@ const Editor = ({
     }
   };
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const onEmojiSelect = (emoji: any) => {
     const quill = quillRef.current;
 
@@ -155,6 +157,29 @@ const Editor = ({
       />
       <div className="flex flex-col border border-slate-200 rounded-md overflow-hidden focus-within:border-slate-300 focus-within:shadow-sm transition bg-white">
         <div ref={containerRef} className="h-full ql-custom" />
+        {!!image && (
+          <div className="p-2">
+            <div className="relative size-[62px] flex items-center justify-center group/image">
+              <Hint label="Remove image">
+                <button
+                  onClick={() => {
+                    setImage(null);
+                    imageElementRef.current!.value = '';
+                  }}
+                  className="hidden group-hover/image:flex rounded-full bg-black/70 hover:bg-black absolute -top-2.5 -right-2.5 text-white size-7 z-[4]  border-2 border-white items-center justify-center"
+                >
+                  <XIcon className="size-3.5 text-white group-hover:text-white/80" />
+                </button>
+              </Hint>
+              <Image
+                src={URL.createObjectURL(image)}
+                alt="Image preview"
+                fill
+                className="rounded-xl overflow-hidden border object-cover"
+              />
+            </div>
+          </div>
+        )}
         <div className="flex px-2 pb-2 z-[5]">
           <Hint
             label={isToolbarVisible ? 'Hide formatting' : 'Show formatting'}

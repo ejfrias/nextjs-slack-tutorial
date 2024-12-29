@@ -16,6 +16,7 @@ import { useState } from 'react';
 interface EmojiPopoverProps {
   children: React.ReactNode;
   hint?: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   onEmojiSelect: (emoji: any) => void;
 }
 
@@ -27,6 +28,7 @@ export const EmojiPopover = ({
   const [popoverOpen, setPopoverOpen] = useState(false);
   const [tooltipOpen, setTooltipOpen] = useState(false);
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const onSelect = (emoji: any) => {
     onEmojiSelect(emoji);
     setPopoverOpen(false);
